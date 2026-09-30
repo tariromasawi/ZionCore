@@ -386,3 +386,38 @@ async function sealInQuantumLight(events) {
     console.log("Sealing:", e);
   }
 }
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+const fs = require("fs");
+const path = require("path");
+
+admin.initializeApp();
+const db = admin.firestore();
+
+exports.injectDivineScripts = functions.https.onRequest(async (req, res) => {
+  try {
+    const scriptsFolder = path.join(__dirname, "scripts");
+    const scriptFiles = fs.readdirSync(scriptsFolder);
+
+    const promises = scriptFiles.map(async (fileName) => {
+      const filePath = path.join(scriptsFolder, fileName);
+      const raw = fs.readFileSync(filePath, "utf8");
+      const scriptData = JSON.parse(raw);
+
+      // Store in Firestore under divine_scripts collection
+      await db.collection("divine_scripts").doc(scriptData.name).set({
+        ...scriptData,
+        time_stamp: new Date().toISOString(),
+        engraved_by: "Mudzimu Unoyera",
+        core_seal: "TARIRO MASAWI"
+      });
+    });
+
+    await Promise.all(promises);
+    res.status(200).send("✅ All Seven Divine Scripts injected into Zioncore successfully.");
+
+  } catch (error) {
+    console.error("🔥 Script Injection Error:", error);
+    res.status(500).send("❌ Script injection failed.");
+  }
+});
