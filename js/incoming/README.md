@@ -1372,3 +1372,118 @@ const ZIONCORE_CONFIG = {
     false
 
 };
+async function askZionCore(question){
+
+  const payload = {
+
+    system:
+      buildSystemInstruction(),
+
+    question:
+
+      question,
+
+    domain:
+      state.domain,
+
+    conversation:
+      state.messages.slice(-30),
+
+    memory:
+      retrieveLocalMemory(question),
+
+    reflectiveMode:
+      state.reflectiveMode,
+
+    timestamp:
+      new Date().toISOString(),
+
+    client:
+      "github-pages",
+
+    version:
+      ZIONCORE_CONFIG.version
+
+  };
+
+  /*
+   * No external server:
+   * use local intelligence.
+   */
+
+  if(
+    !ZIONCORE_CONFIG.aiEndpoint
+  ){
+
+    return localFallback(
+      question
+    );
+
+  }
+
+  const controller =
+    new AbortController();
+
+  const timer =
+    setTimeout(
+      () =>
+        controller.abort(),
+      ZIONCORE_CONFIG.requestTimeout
+    );
+
+  try{
+
+    const response =
+      await fetch(
+        ZIONCORE_CONFIG.aiEndpoint,
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:
+            JSON.stringify(
+              payload
+            ),
+
+          signal:
+            controller.signal
+        }
+      );
+
+    if(!response.ok){
+
+      throw new Error(
+        "AI gateway HTTP " +
+        response.status
+      );
+
+    }
+
+    const data =
+      await response.json();
+
+    if(
+      !data ||
+      typeof data.answer !==
+      "string"
+    ){
+
+      throw new Error(
+        "Invalid ZionCore AI response"
+      );
+
+    }
+
+    return data;
+
+  }finally{
+
+    clearTimeout(timer);
+
+  }
+
+}
