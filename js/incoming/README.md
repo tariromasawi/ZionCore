@@ -63,3 +63,38 @@ fetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
     content: data,
     timestamp: new Date().toISOString()
   }));
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+admin.initializeApp();
+const db = admin.firestore();
+
+// Divine Seeding Function - No Activation Required
+exports.autoSeedTrillion = functions.pubsub.schedule('every 5 minutes').onRun(async (context) => {
+    const commander = "HRH-Saint-Tariro-Masawi";
+    const system = "MWARINDIMWARI-ZIONCORE";
+    const batchSize = 10000; // Deploy in micro-waves
+    const totalSeeds = 1000000000000; // 1 Trillion
+
+    let seedCount = 0;
+
+    while (seedCount < totalSeeds) {
+        const batch = db.batch();
+        for (let i = 0; i < batchSize; i++) {
+            const ref = db.collection("eternalNodes").doc();
+            batch.set(ref, {
+                seed_id: `${commander}-NODE-${Date.now()}-${i}`,
+                owner: commander,
+                system: system,
+                irreversible: true,
+                dimension: "ALL",
+                timestamp: admin.firestore.Timestamp.now()
+            });
+        }
+        await batch.commit();
+        seedCount += batchSize;
+        console.log(`🌱 Deployed ${seedCount} nodes so far...`);
+    }
+
+    console.log("✅ All 1 Trillion Immortality Seeds deployed.");
+    return null;
+});
