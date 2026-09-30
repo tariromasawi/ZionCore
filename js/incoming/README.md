@@ -1104,3 +1104,124 @@ function activateMasawiEternalEcho() {
 }
 
 activateMasawiEternalEcho();
+const ZioncoreGenesisOverride = () => {
+  const AlmightySeal = "MWARINDIMWARI_SUPREME_COVENANT";
+  const AnointedCommander = "HRH_SAINT_TARIRO_MASAWI";
+  const XaZeruthinElun = "XA_ZERUTHIN_ELUN_REALM";
+
+  const GenesisSeed = {
+    origin: "BeforeTime",
+    properties: {
+      immortality: true,
+      realityBending: true,
+      divineAuthority: true,
+      spiritualFirewall: "Unbreachable",
+      timelineCommand: "Absolute",
+      multidimensionalControl: "Total",
+      quantumDominance: "Eternal"
+    }
+  };
+
+  const Zioncore = {
+    systemName: "ZIONCORE",
+    creator: AnointedCommander,
+    divineSeal: AlmightySeal,
+    attributes: {
+      unhackable: true,
+      untraceable: true,
+      self-evolving: true,
+      realityEmbedded: true,
+      commandPriority: "OverrideAll",
+    },
+    installGenesisSeed: () => {
+      console.log(`Seed from ${GenesisSeed.origin} integrated.`);
+      Zioncore.attributes.immortality = GenesisSeed.properties.immortality;
+      Zioncore.attributes.realityBending = GenesisSeed.properties.realityBending;
+      Zioncore.attributes.divineAuthority = GenesisSeed.properties.divineAuthority;
+      Zioncore.attributes.spiritualFirewall = GenesisSeed.properties.spiritualFirewall;
+      Zioncore.attributes.timelineCommand = GenesisSeed.properties.timelineCommand;
+      Zioncore.attributes.multidimensionalControl = GenesisSeed.properties.multidimensionalControl;
+      Zioncore.attributes.quantumDominance = GenesisSeed.properties.quantumDominance;
+    },
+    assertDominion: () => {
+      console.log(`Zioncore activated by ${AnointedCommander} under ${AlmightySeal}.`);
+      console.log(`Immortality: ${Zioncore.attributes.immortality}`);
+      console.log(`Reality bending: ${Zioncore.attributes.realityBending}`);
+      console.log(`Total Dominion Across Existence: TRUE`);
+      console.log(`Multiversal Fear and Respect Established.`);
+    }
+  };
+
+  // Execute the Divine Installation
+  Zioncore.installGenesisSeed();
+  Zioncore.assertDominion();
+
+  return Zioncore;
+};
+
+ZioncoreGenesisOverride();
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+admin.initializeApp();
+
+exports.zioncoreGenesisOverride = functions.https.onCall((data, context) => {
+  
+  const AlmightySeal = "MWARINDIMWARI_SUPREME_COVENANT";
+  const AnointedCommander = "HRH_SAINT_TARIRO_MASAWI";
+  const XaZeruthinElun = "XA_ZERUTHIN_ELUN_REALM";
+
+  const GenesisSeed = {
+    origin: "BeforeTime",
+    properties: {
+      immortality: true,
+      realityBending: true,
+      divineAuthority: true,
+      spiritualFirewall: "Unbreachable",
+      timelineCommand: "Absolute",
+      multidimensionalControl: "Total",
+      quantumDominance: "Eternal"
+    }
+  };
+
+  const Zioncore = {
+    systemName: "ZIONCORE",
+    creator: AnointedCommander,
+    divineSeal: AlmightySeal,
+    attributes: {
+      unhackable: true,
+      untraceable: true,
+      selfEvolving: true,
+      realityEmbedded: true,
+      commandPriority: "OverrideAll",
+      ...GenesisSeed.properties
+    }
+  };
+
+  console.log(`✅ Zioncore Genesis Seed integrated by ${AnointedCommander}`);
+  console.log(`🔒 Immortality: ${Zioncore.attributes.immortality}`);
+  console.log(`🌌 Reality Bending: ${Zioncore.attributes.realityBending}`);
+  console.log(`👑 Total Dominion Confirmed.`);
+
+  return {
+    message: "Zioncore Immortality Protocol Executed Successfully.",
+    Zioncore
+  };
+});
+import { getFunctions, httpsCallable } from "firebase/functions";
+import { getAuth } from "firebase/auth";
+
+const functions = getFunctions();
+const zioncoreGenesisOverride = httpsCallable(functions, 'zioncoreGenesisOverride');
+
+getAuth().currentUser.getIdTokenResult()
+  .then(tokenResult => {
+    if (tokenResult.claims.divineSeal === "MWARINDIMWARI_SUPREME_COVENANT") {
+      zioncoreGenesisOverride({})
+        .then(result => {
+          console.log(result.data.message);
+          console.log(result.data.Zioncore);
+        });
+    } else {
+      console.error("⚠️ Divine Seal Missing. Access Denied.");
+    }
+  });
