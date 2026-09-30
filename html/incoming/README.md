@@ -13,3 +13,78 @@
   <ul id="seeds"></ul>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>XaZeruthinElun Colonisation Mirror</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: black;
+      color: lime;
+      font-family: monospace;
+      padding: 20px;
+    }
+    .node {
+      border-left: 4px solid lime;
+      padding: 10px;
+      margin-bottom: 8px;
+      background: rgba(0,255,0,0.1);
+    }
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { color: lime; }
+      50% { color: white; }
+      100% { color: lime; }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="pulse">🪐 XaZeruthinElun Colonisation Mirror</h1>
+  <h2>Commander: HRH Saint Tariro Masawi</h2>
+  <div id="nodes"></div>
+
+  <script>
+    const commander = "HRH Saint Tariro Masawi";
+    const realm = "XaZeruthinElun";
+    const startTime = new Date().toISOString();
+
+    function createNode(i) {
+      const node = document.createElement("div");
+      node.className = "node";
+      node.innerHTML = `
+        🌍 Node #${i} - Timeline ${80000 - i}<br>
+        👑 Owner: ${commander}<br>
+        🛡️ Realm: ${realm}<br>
+        🕰️ Created: ${new Date().toLocaleTimeString()}<br>
+        📡 Status: <span class="pulse">Dominion Active</span>
+      `;
+      return node;
+    }
+
+    function seedNodes(count) {
+      const container = document.getElementById("nodes");
+      for (let i = 0; i < count; i++) {
+        const node = createNode(i);
+        container.appendChild(node);
+      }
+    }
+
+    function runInfiniteColonisation() {
+      let current = 0;
+      setInterval(() => {
+        const node = createNode(current++);
+        document.getElementById("nodes").prepend(node);
+        if (current > 80000) current = 0;
+      }, 144);
+    }
+
+    // START SEEDING
+    seedNodes(12); // initial load
+    runInfiniteColonisation(); // eternal mirror loop
+  </script>
+</body>
+</html>
