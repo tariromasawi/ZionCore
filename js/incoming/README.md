@@ -3805,3 +3805,575 @@ ZIONCORE.addSecurityBarrier("ZMME-SanctifierShield", {
   runSanctificationProcessOnAllInputs: true,
   logOnlyAnonKeysToDB: true
 });
+/**
+ * ================================================================
+ * ZIONCORE FINANCIAL INTELLIGENCE CORE
+ * ================================================================
+ *
+ * Module:
+ *   ZMME-777-ZIONCORE-FINANCE
+ *
+ * Author:
+ *   Tariro Masawi
+ *
+ * Platform:
+ *   Firebase / GitHub / Web
+ *
+ * PURPOSE
+ *   A safety-first financial research, forecasting and paper-trading
+ *   framework for ZionCore.
+ *
+ * IMPORTANT
+ *   - No bank/card/CVV data is collected.
+ *   - No private financial credentials are stored in source code.
+ *   - No regulatory, authentication or security controls are bypassed.
+ *   - Paper trading is the default execution mode.
+ *   - Financial projections are simulations, NOT guarantees.
+ *   - Real-money execution requires an independently authenticated,
+ *     authorised broker integration.
+ *
+ * SYMBOLIC FRAMEWORK
+ *   "Mwari ndi Mwari" and other spiritual terminology may be used
+ *   as identity, inspiration and interface language. They are not
+ *   represented as mechanisms that guarantee financial outcomes.
+ *
+ * ================================================================
+ */
+"use strict";
+/* ---------------------------------------------------------------
+   1. ZIONCORE CONFIGURATION
+---------------------------------------------------------------- */
+const ZIONCORE_FINANCE_CONFIG = Object.freeze({
+  moduleId: "ZMME-777-ZIONCORE-FINANCE",
+  systemName: "ZionCore Financial Intelligence Core",
+  author: "Tariro Masawi",
+  symbolicSignature: "777-TMSW-ZION",
+  environment:
+    typeof process !== "undefined" && process.env?.NODE_ENV
+      ? process.env.NODE_ENV
+      : "development",
+  executionMode: "PAPER",
+  supportedModes: [
+    "RESEARCH",
+    "BACKTEST",
+    "PAPER",
+    "LIVE"
+  ],
+  defaultCurrency: "GBP",
+  initialSimulationCapital: 100,
+  targetScenario: 1_000_000_000_000,
+  projectionWindowDays: 365,
+  riskControls: {
+    maxPositionPercent: 5,
+    maxDailyLossPercent: 2,
+    maxDrawdownPercent: 10,
+    requireTradeConfirmation: true,
+    emergencyStopEnabled: true
+  },
+  security: {
+    neverStorePaymentCardData: true,
+    neverStoreCVV: true,
+    neverStoreBankPasswords: true,
+    neverExposeApiSecrets: true,
+    auditActions: true
+  }
+});
+/* ---------------------------------------------------------------
+   2. SAFE INPUT VALIDATION
+---------------------------------------------------------------- */
+/**
+ * Only collect information required for research.
+ *
+ * DO NOT add:
+ *   card_number
+ *   card_expiry
+ *   card_cvv
+ *   bank_password
+ *   online_banking_credentials
+ */
+function validateFinancialInput(input = {}) {
+  const allowedFields = [
+    "displayName",
+    "investmentAmount",
+    "riskTolerance",
+    "assets",
+    "timeHorizonDays",
+    "paperTrading"
+  ];
+  const sanitized = {};
+  for (const field of allowedFields) {
+    if (Object.prototype.hasOwnProperty.call(input, field)) {
+      sanitized[field] = input[field];
+    }
+  }
+  if (
+    sanitized.investmentAmount !== undefined &&
+    (!Number.isFinite(Number(sanitized.investmentAmount)) ||
+      Number(sanitized.investmentAmount) < 0)
+  ) {
+    throw new Error("Invalid investment amount.");
+  }
+  return sanitized;
+}
+/* ---------------------------------------------------------------
+   3. FINANCIAL RESEARCH ENGINE
+---------------------------------------------------------------- */
+class ZionCoreFinancialEngine {
+  constructor(config = ZIONCORE_FINANCE_CONFIG) {
+    this.config = config;
+    this.state = {
+      status: "INITIALIZED",
+      mode: config.executionMode,
+      capital: config.initialSimulationCapital,
+      equity: config.initialSimulationCapital,
+      pnl: 0,
+      trades: [],
+      alerts: [],
+      auditLog: []
+    };
+    this.audit("SYSTEM_INITIALIZED", {
+      mode: this.state.mode
+    });
+  }
+  /* -------------------------------------------------------------
+     AUDIT LOG
+  ------------------------------------------------------------- */
+  audit(event, metadata = {}) {
+    this.state.auditLog.push({
+      timestamp: new Date().toISOString(),
+      event,
+      metadata
+    });
+  }
+  /* -------------------------------------------------------------
+     MARKET RESEARCH
+  ------------------------------------------------------------- */
+  analyseMarket(marketData = {}) {
+    this.audit("MARKET_ANALYSIS_REQUESTED", {
+      fields: Object.keys(marketData)
+    });
+    return {
+      timestamp: new Date().toISOString(),
+      status: "ANALYSED",
+      symbolicFramework: {
+        name: "Celestial Market Observatory",
+        meaning:
+          "Symbolic interface layer for organising financial research."
+      },
+      indicators: {
+        trend: this.calculateTrend(marketData),
+        volatility: this.calculateVolatility(marketData),
+        momentum: this.calculateMomentum(marketData)
+      },
+      disclaimer:
+        "Market analysis cannot guarantee future financial performance."
+    };
+  }
+  /* -------------------------------------------------------------
+     BASIC INDICATORS
+  ------------------------------------------------------------- */
+  calculateTrend(data) {
+    if (!Array.isArray(data.prices) || data.prices.length < 2) {
+      return "INSUFFICIENT_DATA";
+    }
+    const first = Number(data.prices[0]);
+    const last = Number(data.prices[data.prices.length - 1]);
+    if (!Number.isFinite(first) || !Number.isFinite(last)) {
+      return "INVALID_DATA";
+    }
+    if (last > first) return "UP";
+    if (last < first) return "DOWN";
+    return "FLAT";
+  }
+  calculateMomentum(data) {
+    if (!Array.isArray(data.prices) || data.prices.length < 2) {
+      return 0;
+    }
+    const first = Number(data.prices[0]);
+    const last = Number(data.prices[data.prices.length - 1]);
+    if (!Number.isFinite(first) || !Number.isFinite(last)) {
+      return 0;
+    }
+    return ((last - first) / first) * 100;
+  }
+  calculateVolatility(data) {
+    if (!Array.isArray(data.prices) || data.prices.length < 3) {
+      return 0;
+    }
+    const prices = data.prices
+      .map(Number)
+      .filter(Number.isFinite);
+    if (prices.length < 3) return 0;
+    const returns = [];
+    for (let i = 1; i < prices.length; i++) {
+      returns.push(
+        (prices[i] - prices[i - 1]) /
+        prices[i - 1]
+      );
+    }
+    const mean =
+      returns.reduce((a, b) => a + b, 0) /
+      returns.length;
+    const variance =
+      returns.reduce(
+        (sum, value) =>
+          sum + Math.pow(value - mean, 2),
+        0
+      ) / returns.length;
+    return Math.sqrt(variance) * 100;
+  }
+  /* -------------------------------------------------------------
+     PAPER TRADE
+  ------------------------------------------------------------- */
+  executePaperTrade({
+    asset,
+    side,
+    quantity,
+    price
+  }) {
+    if (this.state.mode !== "PAPER") {
+      throw new Error(
+        "Paper-trade execution requires PAPER mode."
+      );
+    }
+    if (!asset) {
+      throw new Error("Asset is required.");
+    }
+    if (!["BUY", "SELL"].includes(side)) {
+      throw new Error("Trade side must be BUY or SELL.");
+    }
+    if (
+      !Number.isFinite(Number(quantity)) ||
+      Number(quantity) <= 0
+    ) {
+      throw new Error("Invalid quantity.");
+    }
+    if (
+      !Number.isFinite(Number(price)) ||
+      Number(price) <= 0
+    ) {
+      throw new Error("Invalid price.");
+    }
+    const tradeValue =
+      Number(quantity) * Number(price);
+    const maxAllowed =
+      this.state.equity *
+      (this.config.riskControls.maxPositionPercent / 100);
+    if (tradeValue > maxAllowed) {
+      this.alert(
+        "POSITION_LIMIT_REACHED",
+        {
+          requested: tradeValue,
+          permitted: maxAllowed
+        }
+      );
+      throw new Error(
+        "Trade exceeds configured position-risk limit."
+      );
+    }
+    const trade = {
+      id:
+        `PAPER-${Date.now()}-${Math.random()
+          .toString(36)
+          .slice(2, 8)}`,
+      timestamp:
+        new Date().toISOString(),
+      asset,
+      side,
+      quantity: Number(quantity),
+      price: Number(price),
+      value: tradeValue,
+      executionMode: "PAPER",
+      status: "SIMULATED"
+    };
+    this.state.trades.push(trade);
+    this.audit(
+      "PAPER_TRADE_EXECUTED",
+      trade
+    );
+    return trade;
+  }
+  /* -------------------------------------------------------------
+     RISK ENGINE
+  ------------------------------------------------------------- */
+  checkRisk() {
+    const drawdown =
+      this.state.capital > 0
+        ? ((this.state.capital - this.state.equity) /
+            this.state.capital) *
+          100
+        : 0;
+    const emergency =
+      drawdown >=
+      this.config.riskControls.maxDrawdownPercent;
+    if (emergency) {
+      this.state.status = "RISK_LOCK";
+      this.alert(
+        "EMERGENCY_RISK_LOCK",
+        { drawdown }
+      );
+    }
+    return {
+      drawdown,
+      emergencyStop: emergency,
+      status: this.state.status
+    };
+  }
+  /* -------------------------------------------------------------
+     ALERT ENGINE
+  ------------------------------------------------------------- */
+  alert(type, data = {}) {
+    const alert = {
+      timestamp: new Date().toISOString(),
+      type,
+      data
+    };
+    this.state.alerts.push(alert);
+    this.audit(
+      "SECURITY_OR_RISK_ALERT",
+      alert
+    );
+    return alert;
+  }
+  /* -------------------------------------------------------------
+     PROJECTION ENGINE
+  ------------------------------------------------------------- */
+  generateProjection({
+    startingCapital = 100,
+    annualReturn = 0.10,
+    days = 365
+  } = {}) {
+    if (
+      !Number.isFinite(startingCapital) ||
+      startingCapital <= 0
+    ) {
+      throw new Error(
+        "Starting capital must be positive."
+      );
+    }
+    if (
+      !Number.isFinite(annualReturn) ||
+      annualReturn <= -1
+    ) {
+      throw new Error(
+        "Invalid return assumption."
+      );
+    }
+    const projectedValue =
+      startingCapital *
+      Math.pow(
+        1 + annualReturn,
+        days / 365
+      );
+    return {
+      startingCapital,
+      assumedAnnualReturn:
+        annualReturn,
+      days,
+      projectedValue,
+      targetScenario:
+        this.config.targetScenario,
+      interpretation:
+        "Mathematical scenario only. " +
+        "It is not a prediction or guarantee."
+    };
+  }
+  /* -------------------------------------------------------------
+     EMERGENCY STOP
+  ------------------------------------------------------------- */
+  emergencyStop(reason = "Manual safety stop") {
+    this.state.status = "EMERGENCY_STOPPED";
+    this.audit(
+      "EMERGENCY_STOP",
+      { reason }
+    );
+    return {
+      stopped: true,
+      reason,
+      timestamp:
+        new Date().toISOString()
+    };
+  }
+  /* -------------------------------------------------------------
+     SYSTEM STATUS
+  ------------------------------------------------------------- */
+  getStatus() {
+    return {
+      system:
+        this.config.systemName,
+      module:
+        this.config.moduleId,
+      status:
+        this.state.status,
+      mode:
+        this.state.mode,
+      equity:
+        this.state.equity,
+      pnl:
+        this.state.pnl,
+      tradeCount:
+        this.state.trades.length,
+      alerts:
+        this.state.alerts.length,
+      security:
+        this.config.security
+    };
+  }
+}
+/* ---------------------------------------------------------------
+   4. ZIONCORE INSTANCE
+---------------------------------------------------------------- */
+const ZionCoreFinance =
+  new ZionCoreFinancialEngine();
+/* ---------------------------------------------------------------
+   5. SAFE DEPLOYMENT API
+---------------------------------------------------------------- */
+const ZIONCORE_FINANCE = {
+  initialize() {
+    return ZionCoreFinance.getStatus();
+  },
+  research(marketData) {
+    return ZionCoreFinance.analyseMarket(
+      marketData
+    );
+  },
+  paperTrade(trade) {
+    return ZionCoreFinance.executePaperTrade(
+      trade
+    );
+  },
+  projection(parameters) {
+    return ZionCoreFinance.generateProjection(
+      parameters
+    );
+  },
+  riskCheck() {
+    return ZionCoreFinance.checkRisk();
+  },
+  emergencyStop(reason) {
+    return ZionCoreFinance.emergencyStop(
+      reason
+    );
+  },
+  status() {
+    return ZionCoreFinance.getStatus();
+  }
+};
+/* ---------------------------------------------------------------
+   6. OPTIONAL FIREBASE INTEGRATION
+---------------------------------------------------------------- */
+/**
+ * IMPORTANT:
+ *
+ * Firebase configuration should NOT contain private broker
+ * credentials or financial secrets.
+ *
+ * Example:
+ *
+ *   const firebaseConfig = {
+ *      apiKey: process.env.FIREBASE_API_KEY,
+ *      authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+ *      projectId: process.env.FIREBASE_PROJECT_ID
+ *   };
+ *
+ * Public Firebase configuration values are not a substitute for
+ * server-side authentication and authorization.
+ *
+ * Broker/API secrets belong in:
+ *
+ *   Firebase Secret Manager
+ *   or another secure server-side secret store.
+ *
+ * NEVER commit:
+ *
+ *   .env
+ *   service-account JSON
+ *   private keys
+ *   broker API secrets
+ *   bank credentials
+ *   card information
+ */
+/* ---------------------------------------------------------------
+   7. GITHUB SECURITY GUARD
+---------------------------------------------------------------- */
+function githubSecurityCheck() {
+  const forbiddenPatterns = [
+    /card_number/i,
+    /card_cvv/i,
+    /cvv/i,
+    /bank_password/i,
+    /private_key/i,
+    /secret_key/i,
+    /api_secret/i,
+    /override_earth_law/i,
+    /bypass_kyc/i
+  ];
+  const source =
+    JSON.stringify(
+      ZIONCORE_FINANCE_CONFIG
+    );
+  const violations =
+    forbiddenPatterns.filter(
+      pattern => pattern.test(source)
+    );
+  return {
+    safe:
+      violations.length === 0,
+    violations:
+      violations.map(
+        pattern => pattern.toString()
+      ),
+    recommendation:
+      violations.length === 0
+        ? "No prohibited configuration patterns detected."
+        : "Remove sensitive or bypass-related configuration."
+  };
+}
+/* ---------------------------------------------------------------
+   8. SAFE SYMBOLIC DECLARATION
+---------------------------------------------------------------- */
+const ZIONCORE_DECLARATION = Object.freeze({
+  declaration: `
+    ZionCore Financial Intelligence Core
+    Built for research, disciplined analysis,
+    transparent simulation and responsible execution.
+    £100 may be used as a simulation starting point.
+    £1 trillion may be used as a mathematical target scenario.
+    No financial outcome is guaranteed.
+    No law, authentication mechanism,
+    regulatory requirement or security control
+    is overridden by this system.
+    Wisdom guides the analysis.
+    Evidence guides the model.
+    Risk controls protect the user.
+    Human authorization remains the final authority.
+    Mwari ndi Mwari.
+    Let truth, discipline and responsible stewardship
+    govern every financial decision.
+  `,
+  status: "SAFE_MODE"
+});
+/* ---------------------------------------------------------------
+   9. EXPORT
+---------------------------------------------------------------- */
+if (
+  typeof module !== "undefined" &&
+  module.exports
+) {
+  module.exports = {
+    ZionCoreFinance,
+    ZIONCORE_FINANCE,
+    ZIONCORE_FINANCE_CONFIG,
+    ZIONCORE_DECLARATION,
+    githubSecurityCheck
+  };
+}
+/* ---------------------------------------------------------------
+   10. BROWSER GLOBAL
+---------------------------------------------------------------- */
+if (typeof window !== "undefined") {
+  window.ZionCoreFinance =
+    ZIONCORE_FINANCE;
+  window.ZionCoreDeclaration =
+    ZIONCORE_DECLARATION;
+}
