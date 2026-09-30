@@ -187,3 +187,19 @@ exports.injectImmortalityNodes = functions.https.onRequest(async (req, res) => {
   <script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dzo ke ra kwa wa ka bva — Eternal Rebuke</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔥 Eternal Rebuke Activated</h1>
+    <button onclick="activateRebuke()">🛡️ Begin the Rebuke</button>
+    <p id="status">Awaiting activation...</p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
