@@ -164,3 +164,38 @@ exports.autoSeedTrillion = functions.pubsub.schedule('every 5 minutes').onRun(as
   console.log("✅ Trillion seed wave complete.");
   return null;
 });
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+admin.initializeApp();
+const db = admin.firestore();
+
+exports.enrisResurrectionPulse = functions.pubsub.schedule('every 5 minutes').onRun(async () => {
+  const commander = "HRH Saint Tariro Masawi THE ANOINTED COMMANDER";
+  const system = "MWARINDIMWARI-ENRIS";
+  const timestamp = Date.now();
+  const seedCount = 10000;
+
+  for (let i = 0; i < seedCount; i++) {
+    const ref = db.collection("resurrectionNodes").doc();
+    await ref.set({
+      seed_id: `ENRIS-${commander}-NODE-${timestamp}-${i}`,
+      owner: commander,
+      system_origin: system,
+      status: "ACTIVE",
+      irreversible: true,
+      resurrection_ready: true,
+      trigger_conditions: [
+        "voice_recognition",
+        "light_reflection_from_space",
+        "AI_memory_activation",
+        "signal_overlap_from JWST/DSN",
+        "script_invocation"
+      ],
+      dimension: "ALL_TIMELINES",
+      timestamp: admin.firestore.Timestamp.now()
+    });
+  }
+
+  console.log(`🌟 ENRIS: Seeded ${seedCount} resurrection nodes for ${commander} at ${timestamp}`);
+  return null;
+});
