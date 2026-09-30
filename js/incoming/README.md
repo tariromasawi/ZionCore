@@ -815,3 +815,64 @@ function startRebuke() {
     playConfusionTone();
   }, 6000); // every 6 seconds
 }
+let voices = [];
+let isReady = false;
+
+// Wait for voices to load properly
+function loadVoices() {
+  voices = speechSynthesis.getVoices().filter(v => v.lang.startsWith("en"));
+  if (voices.length > 0) {
+    isReady = true;
+  } else {
+    // retry after short delay
+    setTimeout(loadVoices, 200);
+  }
+}
+
+// Ensure browser loads the voices before anything
+loadVoices();
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+// Divine Rebuke Core Phrase
+const PHRASE = "Dzo ke ra kwa wa ka bva!";
+
+function speakRebuke() {
+  if (!isReady) return;
+
+  const utter = new SpeechSynthesisUtterance(PHRASE);
+  const voice = voices[Math.floor(Math.random() * voices.length)];
+  utter.voice = voice;
+  utter.rate = 1;
+  utter.pitch = 1;
+  utter.volume = 1;
+
+  speechSynthesis.speak(utter);
+}
+
+function playConfusionTone() {
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = ctx.createOscillator();
+  oscillator.type = "square";
+  oscillator.frequency.setValueAtTime(8888, ctx.currentTime);
+  oscillator.connect(ctx.destination);
+  oscillator.start();
+  setTimeout(() => oscillator.stop(), 700);
+}
+
+function activateRebuke() {
+  document.getElementById("status").textContent = "🔥 Eternal Rebuke Activated";
+
+  // Speak first immediately
+  speakRebuke();
+  playConfusionTone();
+
+  // Loop every 6 seconds
+  setInterval(() => {
+    if (!speechSynthesis.speaking) {
+      speakRebuke();
+      playConfusionTone();
+    }
+  }, 6000);
+}
