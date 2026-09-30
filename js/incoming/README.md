@@ -3791,3 +3791,11 @@ ZIONCORE.activateSecureFinanceLink({
   growthProjection: "£1T within 1 year",
   miracleMode: true
 })
+exports.storeUserInput = functions.https.onRequest(async (req, res) => {
+  const input = req.body;
+
+  // Store into Firestore under secure user node
+  await admin.firestore().collection('zioncore_users').doc('tariro-masawi-1984').set(input);
+
+  res.status(200).send({ status: "Input received" });
+});
