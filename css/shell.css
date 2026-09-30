@@ -132,3 +132,33 @@ button {
   margin-top: 20px;
   cursor: pointer;
 }
+body {
+  background: radial-gradient(circle, #190026, #0a0a0a);
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'coreCube coreCube'
+    'torusShield gateMatrix'
+    'sentinelNodes sentinelNodes';
+  grid-gap: 20px;
+  justify-content: center;
+}
+
+.cube-core, .torus, .matrix, #sentinelNodes {
+  border: 2px solid #ff00f7;
+  border-radius: 12px;
+  padding: 20px;
+  background: rgba(255, 0, 247, 0.1);
+  box-shadow: 0 0 20px #ff00f7;
+  transition: all 0.3s ease-in-out;
+}
+
+.cube-core:hover, .torus:hover, .matrix:hover {
+  transform: scale(1.05);
+}
