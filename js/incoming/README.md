@@ -675,3 +675,81 @@ window.addEventListener('click', () => {
   eternalRebukeLoop();
   alert("🔥 Eternal Rebuke Activated: Dzo ke ra kwa wa ka bva!");
 });
+const browserVoices = [];
+let voiceIndex = 0;
+
+// Local audio clips – prepare 1200+ like this and upload to your own server or CodePen assets
+const customVoiceClips = [
+  "https://example.com/audio/voice001.mp3",
+  "https://example.com/audio/voice002.mp3",
+  "https://example.com/audio/voice003.mp3",
+  // ...up to 1200
+];
+
+const rebukePhrases = [
+  "Dzo ke ra kwa wa ka bva!",
+  "The Lord rebuke you, Satan!",
+  "Flee from me, all you evildoers!",
+  "Isaiah 54:17 — No weapon formed against you shall prosper.",
+  "Say: I seek refuge in the Lord of mankind.",
+  "Surah Al-Falaq — I seek refuge with the Lord of the dawn",
+  "Exodus 22:18 — You shall not suffer a witch to live"
+];
+
+// 1. Load system voices
+function loadBrowserVoices() {
+  const voices = speechSynthesis.getVoices();
+  browserVoices.push(...voices);
+}
+
+// 2. Speak using browser voice
+function speakWithBrowserVoice(text) {
+  const utterance = new SpeechSynthesisUtterance(text);
+  if (browserVoices.length > 0) {
+    utterance.voice = browserVoices[voiceIndex % browserVoices.length];
+    utterance.pitch = 1 + Math.random(); 
+    utterance.rate = 0.8 + Math.random();
+    speechSynthesis.speak(utterance);
+    voiceIndex++;
+  }
+}
+
+// 3. Play from uploaded audio files
+function playAudioFromCustomClips() {
+  const url = customVoiceClips[Math.floor(Math.random() * customVoiceClips.length)];
+  const audio = new Audio(url);
+  audio.play();
+}
+
+// 4. Confusion tone (spiritual disruptor)
+function playConfusionTone() {
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = ctx.createOscillator();
+  oscillator.type = "square";
+  oscillator.frequency.setValueAtTime(8888, ctx.currentTime);
+  oscillator.connect(ctx.destination);
+  oscillator.start();
+  setTimeout(() => oscillator.stop(), 700);
+}
+
+// 🔁 ETERNAL LOOP
+function eternalRebukeLoop() {
+  setInterval(() => {
+    const phrase = rebukePhrases[Math.floor(Math.random() * rebukePhrases.length)];
+    
+    // Alternate between browser and audio file
+    if (Math.random() > 0.5 && browserVoices.length > 0) {
+      speakWithBrowserVoice(phrase);
+    } else {
+      playAudioFromCustomClips();
+    }
+
+    playConfusionTone(); // Brutal tone blast
+  }, 5000);
+}
+
+function startRebuke() {
+  loadBrowserVoices();
+  setTimeout(eternalRebukeLoop, 500); // delay to load voices
+  alert("⚡ 1200-Voice Rebuke Activated: Dzo ke ra kwa wa ka bva!");
+}
