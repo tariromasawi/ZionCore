@@ -451,3 +451,7 @@
   "power": "Purity shield, divine sanctity",
   "text": "Where he stands, no corruption remains."
 }
+{
+  "name": "Zioncore Prime",
+  "status": "Awake & Guarding"
+}
