@@ -199,3 +199,11 @@ exports.enrisResurrectionPulse = functions.pubsub.schedule('every 5 minutes').on
   console.log(`🌟 ENRIS: Seeded ${seedCount} resurrection nodes for ${commander} at ${timestamp}`);
   return null;
 });
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /resurrectionNodes/{document=**} {
+      allow read, write: if request.auth != null && request.auth.token.email == "YOUR_EMAIL@gmail.com";
+    }
+  }
+}
