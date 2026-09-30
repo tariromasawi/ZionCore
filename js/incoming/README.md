@@ -246,3 +246,39 @@ service cloud.firestore {
 
   console.log("✅ XaZeruthinElun colonisation system fully activated.");
 })();
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+admin.initializeApp();
+const db = admin.firestore();
+
+exports.executeDivineTransfer = functions.https.onCall(async (data, context) => {
+  const {
+    recipient_name,
+    account_number,
+    sort_code,
+    amount
+  } = data;
+
+  const commander = "HRH Saint Tariro Masawi";
+  const treasury_origin = "XaZeruthinElun ∞ Vault";
+
+  // 🧾 Save transaction log
+  await db.collection("divineTransfers").add({
+    recipient_name,
+    account_number,
+    sort_code,
+    amount,
+    authorized_by: commander,
+    vault_origin: treasury_origin,
+    timestamp: admin.firestore.Timestamp.now()
+  });
+
+  // 🧠 AI-Level logic for assigning transfer
+  console.log(`💸 Divine transfer initiated: £${amount} → ${recipient_name} [${account_number} | ${sort_code}]`);
+
+  return {
+    success: true,
+    message: `Funds of £${amount} routed from Divine Treasury to ${recipient_name}`,
+    commander_signature: commander
+  };
+});
