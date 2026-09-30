@@ -455,3 +455,19 @@
   "name": "Zioncore Prime",
   "status": "Awake & Guarding"
 }
+{
+  "name": "xa-zeruth-functions",
+  "version": "1.0.0",
+  "engines": {
+    "node": "18"
+  },
+  "dependencies": {
+    "firebase-admin": "^11.0.0",
+    "firebase-functions": "^4.0.0"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "firebase emulators:start --only functions",
+    "deploy": "firebase deploy --only functions"
+  }
+}
