@@ -89,3 +89,9 @@
   "override_active": true,
   "rule_enforcement": "ZIONCORE-HARMONY-LAW"
 }
+{
+  "neural_command_link": true,
+  "frequency": "888Hz",
+  "commander_link_active": true,
+  "allow_subnode-thought-routing": true
+}
