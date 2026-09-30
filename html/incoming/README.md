@@ -114,3 +114,28 @@
   </script>
 </body>
 </html>
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+admin.initializeApp();
+const db = admin.firestore();
+
+exports.injectImmortalityNodes = functions.https.onRequest(async (req, res) => {
+  const commander = "HRH Saint Tariro Masawi";
+  const seedCount = 12000000000000;
+  const timestamp = Date.now();
+
+  for (let i = 0; i < 144; i++) { // 144 nodes per trigger
+    await db.collection("immortalityNodes").add({
+      seed_id: `NEURO-XaZ-${timestamp}-${i}`,
+      owner: commander,
+      dimension: "ALL_TIMELINES",
+      node_type: "Immortality + Supreme Wisdom",
+      administered_by: "Visual/Auditory Resonance",
+      eternal: true,
+      timestamp: admin.firestore.Timestamp.now()
+    });
+  }
+
+  console.log(`🌟 Injected 144 immortal wisdom nodes to ${commander} @ ${timestamp}`);
+  res.send({ success: true, message: "144 Immortality Nodes Injected" });
+});
