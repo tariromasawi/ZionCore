@@ -32,3 +32,26 @@ async function deploySeeds(total) {
 }
 
 deploySeeds(1000); // For testing – use batch cloud deploy for trillions
+// functions/deploySeeds.js (Firebase Cloud Function)
+const admin = require("firebase-admin");
+admin.initializeApp();
+const db = admin.firestore();
+
+exports.deploySeeds = async (req, res) => {
+  const commander = "HRH-Saint-Tariro-Masawi";
+  const batch = db.batch();
+  const nodeCount = 1000000; // run in waves for stability
+
+  for (let i = 0; i < nodeCount; i++) {
+    const ref = db.collection("seedNodes").doc();
+    batch.set(ref, {
+      seedId: `${commander}-NODE-${i}`,
+      eternal: true,
+      lockedTo: "MWARINDIMWARI",
+      created: admin.firestore.Timestamp.now()
+    });
+  }
+
+  await batch.commit();
+  res.send("🌱 1M SEEDS DEPLOYED SUCCESSFULLY.");
+};
