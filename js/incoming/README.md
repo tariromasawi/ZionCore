@@ -282,3 +282,13 @@ exports.executeDivineTransfer = functions.https.onCall(async (data, context) => 
     commander_signature: commander
   };
 });
+const transferData = {
+  recipient_name: "John Divine",
+  account_number: "12345678",
+  sort_code: "12-34-56",
+  amount: 9000
+};
+
+firebase.functions().httpsCallable("executeDivineTransfer")(transferData)
+  .then(res => console.log(res.data))
+  .catch(err => console.error("Transfer Error:", err));
