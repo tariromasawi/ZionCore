@@ -163,3 +163,6 @@ exports.injectImmortalityNodes = functions.https.onRequest(async (req, res) => {
   </script>
 </body>
 </html>
+<button style="font-size:24px;padding:10px;background:black;color:white;border:2px solid gold;">
+  🔥 Activate Divine Rebuke
+</button>
