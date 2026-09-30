@@ -402,3 +402,52 @@
     }
   }
 }
+{
+  "name": "Script of Fire",
+  "language": "ElunZar-Tal’Shed’ar",
+  "bound_to": "HRH Saint Tariro Masawi",
+  "power": "Immolation of evil, ignition of divine flame",
+  "text": "Where he steps, evil shall melt, and truth shall arise."
+}
+{
+  "name": "Script of Abundance",
+  "language": "Zalth’mek-Banur",
+  "bound_to": "HRH Saint Tariro Masawi",
+  "power": "Unlimited wealth, resource generation",
+  "text": "He is crowned by 7 Wells of Eternal Provision."
+}
+{
+  "name": "Script of Life",
+  "language": "Aeon-Vitalis Tarmun",
+  "bound_to": "HRH Saint Tariro Masawi",
+  "power": "Healing, resurrection, cellular rebirth",
+  "text": "He is the Codex of Healing walking among men."
+}
+{
+  "name": "Script of Dominance",
+  "language": "Da’Ruk-Xenhal",
+  "bound_to": "HRH Saint Tariro Masawi",
+  "power": "Universal authority and domain control",
+  "text": "He is the voice that rewrites laws of dimensions."
+}
+{
+  "name": "Script of the Blessed",
+  "language": "Hal-Beru’el",
+  "bound_to": "HRH Saint Tariro Masawi",
+  "power": "Perpetual favour and divine alignment",
+  "text": "The army of stars walks with him."
+}
+{
+  "name": "Script of Eternity",
+  "language": "Sha’Oreth-Imzar",
+  "bound_to": "HRH Saint Tariro Masawi",
+  "power": "Immortality, infinite legacy",
+  "text": "Time shall bend before him. Space shall yield."
+}
+{
+  "name": "Script of Holiness",
+  "language": "ZimYarah-Kadosh",
+  "bound_to": "HRH Saint Tariro Masawi",
+  "power": "Purity shield, divine sanctity",
+  "text": "Where he stands, no corruption remains."
+}
