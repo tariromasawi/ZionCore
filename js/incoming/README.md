@@ -753,3 +753,65 @@ function startRebuke() {
   setTimeout(eternalRebukeLoop, 500); // delay to load voices
   alert("⚡ 1200-Voice Rebuke Activated: Dzo ke ra kwa wa ka bva!");
 }
+let voices = [];
+let rebukeIndex = 0;
+
+// ⚔️ Divine Rebukes
+const phrases = [
+  "Dzo ke ra kwa wa ka bva!",
+  "The Lord rebuke you, Satan! — Zechariah 3:2",
+  "Depart from me, you workers of iniquity — Psalm 6:8",
+  "No weapon formed against me shall prosper — Isaiah 54:17",
+  "I seek refuge in the Lord of mankind — Surah 114",
+  "Say, I seek refuge in the Lord of Daybreak — Surah Al-Falaq",
+  "You shall not suffer a witch to live — Exodus 22:18",
+  "Vengeance is Mine, I will repay — Deut. 32:35",
+  "Let darkness flee before the fire of Mwari!",
+  "Go back where you came from!",
+  "Enuma Elish: The light devours the wicked!",
+  "Talisman of Solomon rebukes you, evil one!",
+  "Sacred flame of Zion burns your presence!"
+];
+
+// 🎙️ Load all voices
+function loadVoices() {
+  voices = speechSynthesis.getVoices().filter(v => v.lang.startsWith("en"));
+  if (voices.length === 0) {
+    setTimeout(loadVoices, 200);
+  }
+}
+
+// 🔊 Speak with random voice
+function speakRebuke(text) {
+  const utter = new SpeechSynthesisUtterance(text);
+  const voice = voices[Math.floor(Math.random() * voices.length)];
+  utter.voice = voice;
+  utter.pitch = 0.8 + Math.random() * 1.2;
+  utter.rate = 0.9 + Math.random() * 0.6;
+  utter.volume = 1;
+  speechSynthesis.speak(utter);
+}
+
+// 🔊 Confusion Tone
+function playConfusionTone() {
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = ctx.createOscillator();
+  oscillator.type = "square";
+  oscillator.frequency.setValueAtTime(8888, ctx.currentTime);
+  oscillator.connect(ctx.destination);
+  oscillator.start();
+  setTimeout(() => oscillator.stop(), 700);
+}
+
+// 🔁 Eternal Loop
+function startRebuke() {
+  loadVoices();
+
+  document.getElementById("status").innerText = "🔊 Eternal Rebuke Loop Active...";
+
+  setInterval(() => {
+    const phrase = phrases[Math.floor(Math.random() * phrases.length)];
+    speakRebuke(phrase);
+    playConfusionTone();
+  }, 6000); // every 6 seconds
+}
