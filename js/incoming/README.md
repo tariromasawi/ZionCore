@@ -1225,3 +1225,32 @@ getAuth().currentUser.getIdTokenResult()
       console.error("⚠️ Divine Seal Missing. Access Denied.");
     }
   });
+// Firebase config
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+const sentinelContainer = document.getElementById("sentinelNodes");
+
+// Load Sentinel Nodes from Firestore
+function loadSentinels() {
+  db.collection("sentinelNodes").onSnapshot(snapshot => {
+    sentinelContainer.innerHTML = "<h2>Sentinel Nodes</h2>";
+    snapshot.forEach(doc => {
+      const node = doc.data();
+      const div = document.createElement("div");
+      div.textContent = `⨁ ${node.name} – Status: ${node.status}`;
+      sentinelContainer.appendChild(div);
+    });
+  });
+}
+
+loadSentinels();
