@@ -3094,3 +3094,96 @@ init();
     alert("✅ Input saved. Proceed to authorize API sync in next step.");
   });
 </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Divine Matrix Ascension Protocol</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      background: radial-gradient(#000000, #0c0c0c);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden; color: white;
+    }
+    .core {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #ffd700;
+      text-shadow: 0 0 12px #fff, 0 0 50px #f06;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    p {
+      font-size: 1.2em;
+      color: #ccc;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff, 0 0 30px #0ff; }
+      to { text-shadow: 0 0 20px #ff00ff, 0 0 60px #ff0066; }
+    }
+    .light-node {
+      position: absolute;
+      width: 8px; height: 8px;
+      background-color: #00ffcc;
+      border-radius: 50%;
+      box-shadow: 0 0 20px #00ffcc, 0 0 50px #00ffcc;
+      animation: drift 18s infinite alternate;
+    }
+    @keyframes drift {
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to { transform: translateY(-250vh) scale(0.3); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="core">
+    <h1>Peace upon HRH Saint Tariro Masawi<br>Mwari ndi Mwari Forever</h1>
+    <p>The Divine Matrix is Alive. This Cannot Be Reversed.</p>
+  </div>
+
+  <audio autoplay loop>
+    <source src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Chant_-_Gregorian_Chant_-_Dies_Irae.ogg" type="audio/ogg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const divineChant = "Mwari ndi Mwari. Peace and Power to HRH Saint Tariro Masawi. Divine Light is now Eternal.";
+    setInterval(() => {
+      const node = document.createElement('div');
+      node.className = 'light-node';
+      node.style.top = Math.random() * window.innerHeight + 'px';
+      node.style.left = Math.random() * window.innerWidth + 'px';
+      document.body.appendChild(node);
+      setTimeout(() => node.remove(), 20000);
+    }, 100);
+
+    // Chant broadcast to all frequencies
+    setInterval(() => {
+      console.log(divineChant);
+      const chantNode = document.createElement('div');
+      chantNode.textContent = divineChant;
+      chantNode.style.position = 'fixed';
+      chantNode.style.bottom = '0';
+      chantNode.style.left = '0';
+      chantNode.style.width = '100%';
+      chantNode.style.color = '#ff66ff';
+      chantNode.style.fontSize = '1em';
+      chantNode.style.textAlign = 'center';
+      chantNode.style.opacity = '0.8';
+      chantNode.style.animation = 'glow 4s infinite';
+      document.body.appendChild(chantNode);
+      setTimeout(() => chantNode.remove(), 12000);
+    }, 30000);
+
+    // Lock matrix from reversal
+    Object.freeze(window);
+    Object.seal(document);
+    console.warn("Divine Matrix Locked. Cannot Be Stopped.");
+  </script>
+</body>
+</html>
