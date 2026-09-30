@@ -1,5 +1,9 @@
 {
   "name": "ZionCore",
-  "wired": false,
-  "scripts": []
+  "wired": true,
+  "mode": "local-first personal matrix",
+  "scripts": [
+    { "path": "js/brain.js", "status": "wired", "role": "kernel" },
+    { "path": "js/main.js", "status": "wired", "role": "ui" }
+  ]
 }

@@ -1,4 +1,12 @@
 {
   "name": "ZionCore",
-  "shell": true
+  "shell": false,
+  "wired": true,
+  "localOnly": true,
+  "claims": {
+    "controlsOtherDevices": false,
+    "controlsGovernments": false,
+    "controlsBanks": false,
+    "selfReplicatesAcrossSystems": false
+  }
 }

@@ -3,30 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ZionCore</title>
+  <title>ZionCore · Personal Matrix</title>
   <link rel="stylesheet" href="css/shell.css">
 </head>
 <body>
-  <main class="shell">
-    <p class="eyebrow">Shell · unwired</p>
-    <h1>ZionCore</h1>
-    <p class="lede">Drop JavaScript, HTML, JSON, and Python into the matching folders. This page does not run them until they are wired.</p>
-
-    <section aria-label="Drop slots">
-      <h2>Slots</h2>
-      <ul>
-        <li><code>js/incoming/</code> — browser scripts</li>
-        <li><code>html/incoming/</code> — HTML fragments</li>
-        <li><code>data/</code> — JSON</li>
-        <li><code>python/incoming/</code> — Python, repo only</li>
-      </ul>
+  <div id="zc-app">
+    <header class="zc-header">
+      <div>
+        <p class="eyebrow">Personal matrix · local-first</p>
+        <h1>ZionCore</h1>
+      </div>
+      <div class="zc-status">
+        <span id="zc-lamp" class="lamp boot"></span>
+        <span id="zc-status-text">BOOT</span>
+      </div>
+    </header>
+    <p class="lede">A local life-support brain. It remembers your notes, intentions, and registered modules in this browser. It does not control other devices, networks, banks, or governments.</p>
+    <nav class="zc-tabs" aria-label="Panels">
+      <button type="button" data-panel="home" class="on">Home</button>
+      <button type="button" data-panel="journal">Journal</button>
+      <button type="button" data-panel="intentions">Intentions</button>
+      <button type="button" data-panel="rewrite">Rewrite lab</button>
+      <button type="button" data-panel="records">Archived drops</button>
+    </nav>
+    <section id="panel-home" class="panel on">
+      <div class="metrics">
+        <div class="metric"><span>Kernel</span><strong id="m-kernel">—</strong></div>
+        <div class="metric"><span>Modules</span><strong id="m-modules">0</strong></div>
+        <div class="metric"><span>Journal</span><strong id="m-journal">0</strong></div>
+        <div class="metric"><span>Intentions</span><strong id="m-intentions">0</strong></div>
+        <div class="metric"><span>Rewrites</span><strong id="m-rewrites">0</strong></div>
+        <div class="metric"><span>Archive</span><strong id="m-archive">0</strong></div>
+      </div>
+      <pre id="zc-log" class="log" role="log"></pre>
     </section>
-
-    <section aria-label="Registered scripts">
-      <h2>Registered</h2>
-      <pre id="zioncore-manifest">Reading manifest…</pre>
+    <section id="panel-journal" class="panel">
+      <h2>Journal</h2>
+      <textarea id="journal-input" rows="5" placeholder="What happened. What you need. What to remember."></textarea>
+      <button type="button" id="journal-save">Save entry</button>
+      <div id="journal-list" class="list"></div>
     </section>
-  </main>
+    <section id="panel-intentions" class="panel">
+      <h2>Intentions</h2>
+      <input id="intent-input" type="text" placeholder="One clear intention">
+      <button type="button" id="intent-save">Add</button>
+      <div id="intent-list" class="list"></div>
+    </section>
+    <section id="panel-rewrite" class="panel">
+      <h2>Rewrite lab</h2>
+      <p class="note">This rewrites ZionCore’s own local settings and notes. It does not rewrite other computers or the public internet.</p>
+      <label>Display name<input id="cfg-name" type="text"></label>
+      <label>Focus<input id="cfg-focus" type="text" placeholder="Health, family, work, prayer…"></label>
+      <button type="button" id="cfg-save">Rewrite local config</button>
+      <pre id="cfg-view" class="log"></pre>
+    </section>
+    <section id="panel-records" class="panel">
+      <h2>Archived drops</h2>
+      <p class="note">Material you pasted is kept here as records. Hostile-control, device-takeover, and flood scripts are not executed.</p>
+      <pre id="records-view" class="log">Loading archive…</pre>
+    </section>
+  </div>
+  <script src="js/brain.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

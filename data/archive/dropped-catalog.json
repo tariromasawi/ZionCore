@@ -1,0 +1,13 @@
+{
+  "name": "ZionCore dropped-material catalog",
+  "held": true,
+  "executed": false,
+  "records": [
+    {"id":"js-incoming-readme","kind":"javascript dump","path":"js/incoming/README.md","status":"HELD / NOT EXECUTED","note":"Firebase seed floods, scheduled trillion-node writes, NASA fetch stub, immortality injectors. Left on disk. Not loaded by the page."},
+    {"id":"html-incoming-readme","kind":"html dump","path":"html/incoming/README.md","status":"HELD / NOT EXECUTED","note":"Colonisation mirror pages and immortality UI fragments. Kept as source. Not mounted into index.html."},
+    {"id":"python-incoming-readme","kind":"python dump","path":"python/incoming/README.md","status":"HELD / NOT EXECUTED","note":"Infinite seed loops, 800-trillion deploy, PyAutoGUI device agent. These scripts are not started."},
+    {"id":"main-js-appended-json","kind":"json blobs","path":"js/main.js (was appended after valid script)","status":"SEPARATED / NOT EXECUTED","note":"Firebase configs, dominion contracts, wealth-channel and government-override objects broke JavaScript parsing. Removed from the live script."},
+    {"id":"css-appended-themes","kind":"css fragments","path":"css/shell.css (was appended)","status":"SEPARATED","note":"Extra theme blocks were stacked after the shell stylesheet. Live page now uses one coherent stylesheet."},
+    {"id":"workflow-appended-blueprint","kind":"yaml/text","path":".github/workflows/deploy-pages.yml","status":"REPAIRED","note":"An AI-commander blueprint was pasted after a valid workflow. Workflow restored to a deploy-only file."}
+  ]
+}
