@@ -3621,3 +3621,46 @@ if (require.main === module) {
 }
 
 module.exports = { issueCommand };
+// functions/index.js
+const functions = require("firebase-functions/v2/https");
+const admin = require("firebase-admin");
+const crypto = require("crypto");
+
+admin.initializeApp();
+const db = admin.firestore();
+const HMAC_SECRET = process.env.COMMAND_HMAC_SECRET || "CHANGE_ME";
+
+function canonicalPayload(deviceId, command, args, nonce, ts) {
+  const payload = { deviceId, command, args: args || {}, nonce, ts };
+  return JSON.stringify(payload, Object.keys(payload).sort());
+}
+function sign(deviceId, command, args, nonce, ts) {
+  const msg = canonicalPayload(deviceId, command, args, nonce, ts);
+  return crypto.createHmac("sha256", HMAC_SECRET).update(msg).digest("hex");
+}
+
+exports.issueCommand = functions.onRequest(async (req, res) => {
+  try {
+    // Require Firebase Auth (e.g., check ID token in Authorization header)
+    const idToken = (req.headers.authorization || "").replace("Bearer ", "");
+    const decoded = await admin.auth().verifyIdToken(idToken);
+    const issuerUid = decoded.uid;
+
+    const { deviceId, command, args } = req.body || {};
+    if (!deviceId || !command) return res.status(400).json({ error: "deviceId and command required" });
+
+    const nonce = crypto.randomUUID();
+    const ts = new Date().toISOString();
+    const signature = sign(deviceId, command, args || {}, nonce, ts);
+
+    const cmdRef = db.collection("devices").doc(deviceId).collection("commands").doc();
+    await cmdRef.set({
+      deviceId, command, args: args || {}, nonce, ts, signature,
+      status: "pending", issuerUid
+    });
+
+    res.json({ ok: true, commandId: cmdRef.id });
+  } catch (e) {
+    res.status(500).json({ error: String(e) });
+  }
+});
