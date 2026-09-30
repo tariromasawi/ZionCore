@@ -169,3 +169,21 @@ exports.injectImmortalityNodes = functions.https.onRequest(async (req, res) => {
 <button onclick="startRebuke()" style="font-size:20px;padding:10px;background:black;color:white;border:2px solid gold;">
   🔥 Activate 1200-Voice Rebuke
 </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🔥 1200-Rebuke Engine: Dzo ke ra kwa wa ka bva!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🔥 Eternal Rebuke Engine</h1>
+    <p>Press the button to activate continuous rebuking in all voices.</p>
+    <button onclick="startRebuke()">🛡️ Start Divine Rebuke</button>
+    <div class="status" id="status">Awaiting activation...</div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
