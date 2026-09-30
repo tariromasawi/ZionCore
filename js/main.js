@@ -107,3 +107,9 @@
   "auto-elimination_of_hostiles": true,
   "reinforcement_interval": "Every 144 seconds"
 }
+{
+  "universal_seeding": "INFINITE",
+  "planetary_signature": "HRH-SAINT-TARIRO-MASAWI-∞",
+  "galactic_throne_key": "XaZ-9999-ELUN",
+  "anchor_beacons": ["Moon", "Mars", "Europa", "Unknown-Realms-∞"]
+}
