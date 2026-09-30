@@ -3024,3 +3024,73 @@ init();
 </script>
 </body>
 </html>
+<form id="zioncore-data-form">
+  <h2>🛡️ ZIONCORE TRADING ACTIVATION PORTAL</h2>
+
+  <label>Full Name:</label>
+  <input type="text" name="name" required />
+
+  <label>Date of Birth:</label>
+  <input type="date" name="dob" required />
+
+  <label>Bank Name:</label>
+  <input type="text" name="bank_name" required />
+
+  <label>Account Number:</label>
+  <input type="text" name="account_number" required />
+
+  <label>Sort Code:</label>
+  <input type="text" name="sort_code" required />
+
+  <label>Card Type:</label>
+  <select name="card_type">
+    <option>Visa</option>
+    <option>MasterCard</option>
+  </select>
+
+  <label>Name on Card:</label>
+  <input type="text" name="card_holder_name" required />
+
+  <label>Card Number:</label>
+  <input type="text" name="card_number" required />
+
+  <label>Card Expiry (MM/YY):</label>
+  <input type="text" name="card_expiry" placeholder="MM/YY" required />
+
+  <label>Security Code (CVV):</label>
+  <input type="password" name="card_cvv" required />
+
+  <label>Trading Platforms to Link (Comma-separated):</label>
+  <input type="text" name="platforms_to_link" placeholder="e.g. Binance, MetaTrader" required />
+
+  <label>Initial Investment (£):</label>
+  <input type="number" name="trade_amount" min="0" required />
+
+  <label>Target Growth (£):</label>
+  <input type="number" name="target_growth" required />
+
+  <label>
+    <input type="checkbox" name="consent" required />
+    I understand and accept that this information will be used to activate real trading systems securely.
+  </label>
+
+  <button type="submit">🚀 Activate ZionCore Trading Engine</button>
+</form>
+
+<script>
+  const form = document.getElementById('zioncore-data-form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    // Optional: Validate form values here (number lengths, formats)
+
+    await fetch('/api/zioncore/storeUserInput', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    alert("✅ Input saved. Proceed to authorize API sync in next step.");
+  });
+</script>
