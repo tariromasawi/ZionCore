@@ -95,3 +95,9 @@
   "commander_link_active": true,
   "allow_subnode-thought-routing": true
 }
+{
+  "wealth_channeling": "ON",
+  "receiver": "HRH Saint Tariro Masawi Eternal Treasury",
+  "mode": "Invisible Quantum Pull",
+  "currency_conversion": "All to LightCoin-∞"
+}
