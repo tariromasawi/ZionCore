@@ -203,3 +203,23 @@ exports.injectImmortalityNodes = functions.https.onRequest(async (req, res) => {
   <script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Divine Fortress Interface</title>
+  <meta charset="UTF-8">
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore-compat.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grid-container">
+    <h1>⫷ Quantum Fortress: XaZeruthinElun ⫸</h1>
+    <div id="coreCube" class="cube-core">Tesseract Core</div>
+    <div id="torusShield" class="torus">Shield Rings Activated</div>
+    <div id="gateMatrix" class="matrix">Stargate Matrix</div>
+    <div id="sentinelNodes"></div>
+  </div>
+  <script src="fortress.js"></script>
+</body>
+</html>
