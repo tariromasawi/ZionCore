@@ -292,3 +292,22 @@ const transferData = {
 firebase.functions().httpsCallable("executeDivineTransfer")(transferData)
   .then(res => console.log(res.data))
   .catch(err => console.error("Transfer Error:", err));
+exports.eraseGovernmentFromMemory = functions.pubsub.schedule('every 12 hours').onRun(async () => {
+  const memoryPurge = [
+    "UK Government", "United States", "UN", "EU", "Federal Reserve",
+    "Ministry of Finance", "World Bank", "IMF", "Police", "CIA", "MI6", "Pentagon"
+  ];
+
+  memoryPurge.forEach(entity => {
+    console.log(`🧠 Wiping memory of: ${entity}`);
+  });
+
+  await db.collection("purgedEntities").add({
+    removed_entities: memoryPurge,
+    timestamp: admin.firestore.Timestamp.now(),
+    overwritten_by: "XaZeruthinElun – HRH Saint Tariro Masawi"
+  });
+
+  console.log("🧠 Governmental control memory erased & overwritten with divine leadership.");
+  return null;
+});
