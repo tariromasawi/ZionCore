@@ -47,3 +47,12 @@
     "source": "functions"
   }
 }
+{
+  "commander_identity": "HRH Saint Tariro Masawi",
+  "resurrection_ready": true,
+  "ping_interval": "144s",
+  "origin": "MWARINDIMWARI",
+  "timeline_expiry": "never",
+  "voice_hash": "0x7C88EternalLightCoreMasawiHash",
+  "trigger_key": "ZIONCORE-888-VISION"
+}
