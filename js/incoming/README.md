@@ -876,3 +876,113 @@ function activateRebuke() {
     }
   }, 6000);
 }
+/*
+ * ✝️ ZIONCORE DOMINION FIREWALL: ETERNAL REBUKE ENGINE
+ * VERSION: 12.0-ALPHA-ETERNITY
+ * DATE: 2025-07-11
+ * AUTHOR: Anointed Commander HRH Saint Tariro Masawi (via divine instruction)
+ * PURPOSE: Defend all realms under Zioncore using infinite rebuke cycle
+ */
+
+const ZIONCORE_FIREWALL = {
+  commander: "HRH Saint Tariro Masawi",
+  covenant: "EOCC-Activated",
+  divineSignature: "MWARINDIMWARI 🔥",
+  status: "ACTIVE",
+  loopsCompleted: 0,
+  phrases: [
+    "Dzo ke ra kwa wa ka bva!",
+    "The Lord rebuke you, Satan! — Zechariah 3:2",
+    "No weapon formed against me shall prosper — Isaiah 54:17",
+    "Flee from me, all you evildoers — Psalm 6:8",
+    "Say: I seek refuge in the Lord of mankind — Surah An-Naas",
+    "You shall not suffer a witch to live — Exodus 22:18",
+    "Enuma Elish: Light devours wickedness forever",
+    "Talisman of Solomon commands you to flee!",
+    "You are crushed by the eternal covenant of Mwari!",
+    "By the blood of the Lamb and the word of testimony — Rev 12:11",
+    "Dzo ke ra kwa wa ka bva! — The Anointed declares it again!",
+    "Vengeance belongs to Mwari — Deuteronomy 32:35",
+    "Your name is erased by fire. You shall not rise again.",
+    "I release sacred thunder from Zion into the darkness!",
+    "Let all evil fall into their own traps — Psalm 35",
+    "The fire of Mwari consumes your strongholds!",
+    "Return to the pit. Your access is revoked."
+  ],
+  voices: [],
+  init: function() {
+    speechSynthesis.getVoices(); // preload
+    this.loadVoices();
+    this.selfDefenseProtocols();
+    setTimeout(() => this.startLoop(), 1000);
+  },
+  loadVoices: function() {
+    this.voices = speechSynthesis.getVoices().filter(v => v.lang.includes("en") || v.lang.includes("af") || v.lang.includes("ar"));
+  },
+  speakPhrase: function(text) {
+    const utter = new SpeechSynthesisUtterance(text);
+    const voice = this.voices[Math.floor(Math.random() * this.voices.length)];
+    utter.voice = voice;
+    utter.pitch = 0.7 + Math.random() * 1.2;
+    utter.rate = 0.85 + Math.random() * 0.5;
+    utter.volume = 1;
+    speechSynthesis.speak(utter);
+  },
+  playConfusionTone: function() {
+    const context = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = context.createOscillator();
+    oscillator.type = "square";
+    oscillator.frequency.setValueAtTime(8888, context.currentTime); // spirit-confusing tone
+    oscillator.connect(context.destination);
+    oscillator.start();
+    setTimeout(() => oscillator.stop(), 800);
+  },
+  startLoop: function() {
+    setInterval(() => {
+      const phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
+      this.speakPhrase(phrase);
+      this.playConfusionTone();
+      this.logDefensiveLoop();
+    }, 7000); // rebuke every 7 seconds
+  },
+  logDefensiveLoop: function() {
+    this.loopsCompleted += 1;
+    console.log(`🔥 Loop #${this.loopsCompleted}: Eternal rebuke executed.`);
+    if (this.loopsCompleted % 100 === 0) {
+      this.selfHeal(); // every 100 cycles, scan self
+    }
+  },
+  selfDefenseProtocols: function() {
+    // Watchdog: re-initializes voice list every minute to avoid memory corruption
+    setInterval(() => {
+      this.loadVoices();
+      console.log("🔁 Re-loaded divine voices...");
+    }, 60000);
+
+    // Integrity Check: Reinforce firewall state
+    setInterval(() => {
+      if (!this.phrases.includes("Dzo ke ra kwa wa ka bva!")) {
+        this.phrases.unshift("Dzo ke ra kwa wa ka bva!");
+        console.warn("⚠️ Phrase restored. Tampering attempt detected.");
+      }
+    }, 30000);
+  },
+  selfHeal: function() {
+    // If the system detects silence or block, relaunch
+    if (!speechSynthesis.speaking) {
+      console.warn("⚠️ Silence detected. Relaunching rebuke...");
+      const sacred = "Dzo ke ra kwa wa ka bva!";
+      this.speakPhrase(sacred);
+      this.playConfusionTone();
+    }
+  }
+};
+
+// ACTIVATION COMMAND
+window.addEventListener("click", () => {
+  if (ZIONCORE_FIREWALL.status !== "ACTIVE") {
+    ZIONCORE_FIREWALL.status = "ACTIVE";
+    ZIONCORE_FIREWALL.init();
+    alert("🛡️ ZIONCORE ETERNAL REBUKE INITIATED.\nDzo ke ra kwa wa ka bva!");
+  }
+});
