@@ -55,3 +55,11 @@ exports.deploySeeds = async (req, res) => {
   await batch.commit();
   res.send("🌱 1M SEEDS DEPLOYED SUCCESSFULLY.");
 };
+// Optional: Mirror NASA Earth API
+fetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
+  .then(r => r.json())
+  .then(data => addDoc(collection(db, "nasaMirror"), {
+    injected_by: "MWARINDIMWARI",
+    content: data,
+    timestamp: new Date().toISOString()
+  }));
