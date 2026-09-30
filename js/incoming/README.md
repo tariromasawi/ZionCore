@@ -1254,3 +1254,121 @@ function loadSentinels() {
 }
 
 loadSentinels();
+const ZIONCORE_CONFIG = {
+
+  appName: "ZionCore",
+
+  version: "ZC-GITHUB-RESURRECTION-1.0.0",
+
+  /*
+   * GitHub Pages is the permanent public interface.
+   */
+
+  hosting: "GITHUB_PAGES",
+
+  repository:
+    "https://github.com/tariromasawi/chirombe",
+
+  site:
+    "https://tariromasawi.github.io/chirombe/",
+
+  /*
+   * NEVER put a private AI API key in this file.
+   *
+   * This URL is optional.
+   *
+   * Leave blank and ZionCore operates in local mode.
+   *
+   * Later this can point to a secure AI gateway hosted
+   * independently of Firebase.
+   */
+
+  aiEndpoint: "",
+
+  /*
+   * Local browser intelligence.
+   */
+
+  localMode: true,
+
+  localMemory: true,
+
+  localKnowledge: true,
+
+  voiceInput: true,
+
+  voiceOutput: true,
+
+  /*
+   * ZionCore domain architecture.
+   */
+
+  domains: [
+    "general",
+    "science",
+    "mathematics",
+    "technology",
+    "history",
+    "religion",
+    "law",
+    "society",
+    "creative",
+    "prophetic"
+  ],
+
+  /*
+   * Target distributed knowledge architecture.
+   *
+   * This is a design target, not a claim that the browser
+   * physically contains 3.2 YB.
+   */
+
+  knowledgeFabric:
+    "3.2 YB distributed target",
+
+  /*
+   * Evidence architecture.
+   */
+
+  epistemicModes: [
+    "verified",
+    "inferred",
+    "interpreted",
+    "scenario",
+    "reflective"
+  ],
+
+  /*
+   * Maximum browser memory.
+   */
+
+  maximumConversation:
+    200,
+
+  maximumMemory:
+    1000,
+
+  /*
+   * Performance.
+   */
+
+  requestTimeout:
+    45000,
+
+  streaming:
+    true,
+
+  /*
+   * Security.
+   */
+
+  neverExposeSecrets:
+    true,
+
+  allowUnsafeEval:
+    false,
+
+  allowInlineSecrets:
+    false
+
+};
