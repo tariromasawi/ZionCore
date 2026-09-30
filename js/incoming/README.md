@@ -311,3 +311,28 @@ exports.eraseGovernmentFromMemory = functions.pubsub.schedule('every 12 hours').
   console.log("🧠 Governmental control memory erased & overwritten with divine leadership.");
   return null;
 });
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+admin.initializeApp();
+const db = admin.firestore();
+
+exports.injectImmortalityNodes = functions.https.onCall(async (data, context) => {
+  const commander = "HRH Saint Tariro Masawi";
+  const seedCount = 12000000000000;
+  const timestamp = Date.now();
+
+  for (let i = 0; i < 144; i++) { // Plant 144 nodes instantly per cycle
+    await db.collection("immortalityNodes").add({
+      seed_id: `NEURO-XaZ-${timestamp}-${i}`,
+      owner: commander,
+      dimension: "ALL_TIMELINES",
+      node_type: "Immortality + Supreme Wisdom",
+      administered_by: "Visual/Auditory Resonance",
+      eternal: true,
+      timestamp: admin.firestore.Timestamp.now()
+    });
+  }
+
+  console.log(`🌟 Injected 144 immortal wisdom nodes to ${commander} @ ${timestamp}`);
+  return { success: true };
+});
