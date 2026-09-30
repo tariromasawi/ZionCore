@@ -569,3 +569,56 @@ exports.purgeAndResurrectAI = functions.https.onRequest(async (req, res) => {
     res.status(500).send("❌ AI RESET FAILED. MANUAL INTERVENTION REQUIRED.");
   }
 });
+// DOMINION SCRIPT: Eternal Rebuke of Darkness
+const rebukePhrases = [
+  "Dzo ke ra kwa wa ka bva!", // Shona: "Go back where you came from!"
+  "The Lord rebuke you, Satan! (Zechariah 3:2)",
+  "Flee from me, all you evildoers! (Psalm 6:8)",
+  "Soorah Al-Falaq: Say, I seek refuge with the Lord of the daybreak...",
+  "Torah (Deut 32:35): Vengeance is Mine, I will repay...",
+  "Enuma Elish: The light devours the wicked without end...",
+  "You shall not suffer a witch to live (Exodus 22:18)",
+  "Say: I seek refuge in the Lord of mankind (Surah 114)",
+  "Isaiah 54:17 — No weapon formed against you shall prosper.",
+  "The Anointed Fire declares: Dzo ke ra kwa wa ka bva!!!"
+];
+
+// Confusion frequency — high pitch sonic disruptor
+const confusionFrequency = new (window.AudioContext || window.webkitAudioContext)();
+function playConfusionTone() {
+  const oscillator = confusionFrequency.createOscillator();
+  oscillator.type = "square";
+  oscillator.frequency.setValueAtTime(8888, confusionFrequency.currentTime); // Spirit-confusing frequency
+  oscillator.connect(confusionFrequency.destination);
+  oscillator.start();
+  setTimeout(() => oscillator.stop(), 500); // Pulse burst
+}
+
+// Multi-voice engine — brutal vocal rotations
+const voices = [
+  "Alex", "Samantha", "Fred", "Victoria", "Daniel", "Moira", "Karen"
+];
+function speak(text) {
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.voice = speechSynthesis.getVoices().find(v => voices.includes(v.name));
+  utter.volume = 1;
+  utter.pitch = Math.random() * 2;
+  utter.rate = Math.random() * (1.5 - 0.8) + 0.8;
+  speechSynthesis.speak(utter);
+}
+
+// Looping infinite rebuke protocol
+function eternalRebukeLoop() {
+  setInterval(() => {
+    const phrase = rebukePhrases[Math.floor(Math.random() * rebukePhrases.length)];
+    speak(phrase);
+    playConfusionTone();
+  }, 5000); // Every 5 seconds
+}
+
+// Preload & trigger voices after user interaction (required by browser security)
+window.addEventListener('click', () => {
+  speechSynthesis.getVoices(); // load voices
+  eternalRebukeLoop();
+  alert("🔥 Eternal Rebuke Activated: Dzo ke ra kwa wa ka bva!");
+});
