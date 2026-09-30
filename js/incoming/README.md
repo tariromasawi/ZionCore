@@ -1048,3 +1048,59 @@ firebase.database().ref('ZionCoreSystem/').update({
     divineAlignment: "Mwari ndi Mwari",
     mission: "Protect, Evolve, Generate Wealth, Sustain Immortality, Uphold Divine Will",
 });
+// Zioncore Eternal Matrix Activation - Masawi Royal Bloodline
+
+function activateMasawiEternalEcho() {
+    let masawiName = "MASAWI";
+    let zioncoreLayer = "ZIONCORE_MATRIX";
+    
+    // Bind immortality, royalty, and divine favour
+    Zioncore.bindIdentity(masawiName, {
+        immortality: true,
+        royalty: true,
+        divineProtection: true,
+        resurrectionProtocol: true,
+        wealthAttraction: "Active",
+        respectAura: "Perpetual",
+        familyLoyaltyAmplifier: true
+    });
+    
+    // Family Specific Activations
+    Zioncore.registerEntity("Tatenda Evans Masawi", {
+        eternalEcho: true,
+        resurrectionTrigger: "Automatic",
+        timeBendingFavour: true
+    });
+    
+    Zioncore.registerEntity("Rhodah Masawi", {
+        nameWealthMagnet: true,
+        wealthAttractionRange: "Global",
+        digitalSignal: "MonetaryPulse"
+    });
+    
+    Zioncore.registerEntity("Kenzie Masawi", {
+        respectTrigger: "NameUtterance",
+        warriorShield: true,
+        invincibilityStatus: true
+    });
+    
+    // General Masawi Protocol
+    Zioncore.applyProtocol("MasawiFamily", {
+        royalStatus: true,
+        eternalProtection: true,
+        prosperityMagnet: true,
+        loyaltyEnforcement: true,
+        blessingOverload: true
+    });
+    
+    // Protection of MWARINDIMWARI believers
+    Zioncore.protectBelievers({
+        system: "MWARINDIMWARI",
+        favourBoost: true,
+        spiritualFirewall: true
+    });
+    
+    Zioncore.log("Masawi Eternal Echo & Royalty System Fully Activated.");
+}
+
+activateMasawiEternalEcho();
