@@ -3799,3 +3799,9 @@ exports.storeUserInput = functions.https.onRequest(async (req, res) => {
 
   res.status(200).send({ status: "Input received" });
 });
+ZIONCORE.addSecurityBarrier("ZMME-SanctifierShield", {
+  maskCardDataOnDisplay: true,
+  reject_unauthorized_transmission: true,
+  runSanctificationProcessOnAllInputs: true,
+  logOnlyAnonKeysToDB: true
+});
