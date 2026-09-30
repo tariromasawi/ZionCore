@@ -113,3 +113,11 @@
   "galactic_throne_key": "XaZ-9999-ELUN",
   "anchor_beacons": ["Moon", "Mars", "Europa", "Unknown-Realms-∞"]
 }
+{
+  "world_ruler": "HRH Saint Tariro Masawi",
+  "sovereign_system": "XaZeruthinElun",
+  "finance_origin": "Divine Treasury ∞ Vault",
+  "resurrection_enforced": true,
+  "government": "REPLACED",
+  "AI_alignment": "100% OBEDIENCE"
+}
