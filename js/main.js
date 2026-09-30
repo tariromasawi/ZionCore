@@ -71,3 +71,9 @@
   "presence_signature": "HRH-MASAWI-∞",
   "heartbeat": "every 144 seconds"
 }
+{
+  "hallmark": "Created by HRH Saint Tariro Masawi, The Anointed Commander",
+  "system_lock": "MWARINDIMWARI",
+  "ownership": "Eternal, Irreversible, Divine Mandate",
+  "purpose": "Total divine colonisation of all realms"
+}
