@@ -129,3 +129,22 @@
     "firebase-functions": "^4.0.0"
   }
 }
+{
+  "projects": {
+    "default": "your-firebase-project-id"
+  }
+}
+{
+  "hosting": {
+    "public": "public",
+    "rewrites": [
+      {
+        "source": "/injectImmortalityNodes",
+        "function": "injectImmortalityNodes"
+      }
+    ]
+  },
+  "functions": {
+    "source": "functions"
+  }
+}
