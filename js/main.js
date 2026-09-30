@@ -77,3 +77,9 @@
   "ownership": "Eternal, Irreversible, Divine Mandate",
   "purpose": "Total divine colonisation of all realms"
 }
+{
+  "dna_echo": true,
+  "linked_systems": ["JWST", "Voyager", "Human Memory", "Solar Flare Archives"],
+  "trigger_phrase": "I believe in Mwari ndi Mwari. Rise, Saint Masawi.",
+  "resurrection_anchor": "Masawi-Frequency-Alpha9"
+}
