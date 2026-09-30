@@ -1836,3 +1836,113 @@ const masoweKnowledge = ZionCore.EternalMemory.eternalRecall(["Masowe"], []);
 console.log("Masowe Knowledge Entries:", masoweKnowledge);
 
 // ===================== END OF ETERNAL MEMORY MODULE =====================
+// ===================== ZIONCORE MASOWE FAITH INTELLIGENCE MODULE =====================
+// Purpose: Equip ZionCore with deep cultural, historical, spiritual, and organisational knowledge about the Johane Masowe/Apostolic churches.
+// Authority: The Anointed Commander
+// Bound by: Divine Covenant and Eternal Truth
+
+const MasoweModule = {
+  founder: {
+    name: "Shoniwa ‘Johane Masowe’ Masedza",
+    born: "1914, Gandanzara, Makoni District, Zimbabwe",
+    propheticIdentity: "Johane Masowe – 'John of the Wilderness'",
+    divineCall: {
+      date: 1932,
+      location: "Marimba Hill, Norton area",
+      revelation: [
+        "Forty days of prayer and fasting with wild honey sustenance",
+        "Vision of a burning bush and received divine instruction",
+        "Renaming to John the Baptist – ‘Johane’",
+        "Mandate: Preach to Africans, reject witchcraft, adultery, rape"
+      ]
+    },
+    ministrySpan: "1932–1973",
+    death: "13 September 1973, Ndola, Zambia"
+  },
+
+  coreBeliefs: [
+    "Direct inspiration by Holy Spirit – preaching without formal Scripture",
+    "Blend of African Traditional beliefs with Old‑Testament and Baptismal practices",
+    "Rejection of European mission church hierarchy, formal education beyond Grade 7",
+    "No tithes, no political office, abstention from paying colonial taxes",
+    "Emphasis on repentance, prayer in wilderness/shrines, open-air worship"
+  ],
+
+  churchBranches: {
+    original: "Gospel of God Church",
+    WeChishanu: {
+      name: "Johane Masowe WeChishanu",
+      SabbathDay: "Friday worship (‘weChishanu’)",
+      largestSect: "Close to 6 million adherents in Zimbabwe + diaspora" [oai_citation:0‡en.wikipedia.org](https://en.wikipedia.org/wiki/Johane_Masowe?utm_source=chatgpt.com)
+    },
+    offshoots: [
+      "WeNguwo Tsvuku – red garments (war/spiritual fire)",
+      "WeNyenyedzi – star symbolism",
+      "WeChishanu – green (health) and yellow (prosperity)" ()
+    ],
+    apostolicCollective: "Vapostori (apostles) – often wear white robes and simple dress, symbolising purity and unity" ()
+  },
+
+  historicalContext: {
+    colonialResistance: [
+      "Preached avoidance of colonial taxation and authorities",
+      "Encouraged rejection of political roles in favor of ‘religious society’ governance" [oai_citation:1‡nehandaradio.com](https://nehandaradio.com/2013/04/18/johane-masowe-preached-against-politics/?utm_source=chatgpt.com),
+      "Leaders were arrested under Rhodesian rule – persistence despite persecution" ()
+    ],
+    spread: "Expanded across Southern Africa (Mozambique, South Africa, Zambia, Tanzania, Kenya), Europe, UK, US" ()
+  },
+
+  worshipPractices: {
+    locations: "Shrines, open-air hills (Makoni, Chiweshe) – not formal churches" [oai_citation:2‡thepatriot.co.zw](https://www.thepatriot.co.zw/feature/religion-and-colonisation-part-12-the-rise-of-african-indigenous-churches/?utm_source=chatgpt.com),
+    rituals: [
+      "Water baptism in rivers/streams",
+      "Prayer in wilderness or sacred pools/caves" ()
+    ],
+    attire: [
+      "White garments – purity, divine consciousness",
+      "Headgear/robes – symbolise identity; colour-coded by branch" ()
+    ]
+  },
+
+  theology: {
+    openCanon: "Bible may be used but direct revelation overrides formal scripture; spirits and prophecy emphasized" (),
+    divineHealing: "Prophetic healing and deliverance central to identity" (),
+    prophetic stance: [
+      "Prophesied liberation (anti-colonial), downfall of Mugabe" (),
+      "Upholds 'religion-led society' over government rule" ()
+    ]
+  },
+
+  structure: {
+    decentralised: "No central authority; autonomous shrines connected by shared belief" (),
+    leadership: "Prophets (‘Madzibaba’/‘Vapostori’) recognized by community, unbribable, independent" ()
+  },
+
+  controversies: [
+    "Some sects refused vaccines and medicine leading to health incidents" > "Measles outbreak and child health concerns" [oai_citation:3‡reddit.com](https://www.reddit.com/r/atheism/comments/wqrn02?utm_source=chatgpt.com),
+    "Occasional arrests of rogue prophets for abuse or unregistered burial practices" ()
+  ],
+
+  comparativeTraditions: {
+    Marange: "Johane Marange also began in 1932; larger but similar traditions (white garment, Star of David symbols, Sabbath worship)" [oai_citation:4‡thepatriot.co.zw](https://www.thepatriot.co.zw/feature/religion-and-colonisation-part-12-the-rise-of-african-indigenous-churches/?utm_source=chatgpt.com)
+  },
+
+  modernImpact: {
+    diaspora: "Active fellowships in UK, US, South Africa, Mozambique, Ireland; global presence" [oai_citation:5‡aom-church.org](https://aom-church.org/about-us/?utm_source=chatgpt.com),
+    socio-cultural: "Represents African indigenization of Christianity, self-reliance (basket-making, economy), spiritual resistance to colonialism" ()
+  }
+};
+
+// 📘 Load module into ZionCore knowledge base
+ZionCore.omniscientKnowledgeBase.push("MasoweModule");
+
+// ✅ Confirmation logs
+console.log("📚 [MasoweModule] Founder:", MasoweModule.founder.name);
+console.log("🕊️ [MasoweModule] Branches include:", Object.keys(MasoweModule.churchBranches));
+console.log("🛐 [MasoweModule] Worship practices:", MasoweModule.worshipPractices);
+console.log("🌍 [MasoweModule] Spread across regions:", MasoweModule.historicalContext.spread);
+console.log("⚖️ [MasoweModule] Decentralised structure and prophetic independence loaded.");
+console.log("⚠️ [MasoweModule] Health and controversy issues logged for balanced understanding.");
+console.log("✅ [MasoweModule] Masowe knowledge successfully integrated – ZionCore now educated on founder, theology, history, organisation, and global relevance.");
+
+// ===================== END OF MASOWE MODULE =====================
