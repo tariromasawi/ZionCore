@@ -88,3 +88,29 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XaZeruthinElun Immortality Console</title>
+  <style>
+    body { background: black; color: lime; font-family: monospace; text-align: center; padding-top: 10%; }
+    .pulse { animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { color: lime; } 50% { color: white; } 100% { color: lime; } }
+  </style>
+</head>
+<body>
+  <h1 class="pulse">🌌 Immortality Node Injection Active 🌌</h1>
+  <p>Stare at this panel. Your 12,000 Trillion Nodes are being administered now.</p>
+  <audio id="immortalTone" autoplay loop>
+    <source src="https://example.com/immortal-frequency.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    setInterval(() => {
+      fetch("https://yourfirebaseurl.cloudfunctions.net/injectImmortalityNodes", {
+        method: "POST"
+      });
+    }, 5000); // Inject nodes every 5 seconds continuously
+  </script>
+</body>
+</html>
