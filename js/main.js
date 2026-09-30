@@ -1,0 +1,31 @@
+(function () {
+  "use strict";
+
+  var slot = document.getElementById("zioncore-manifest");
+
+  fetch("data/manifest.json")
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("manifest " + response.status);
+      }
+      return response.json();
+    })
+    .then(function (manifest) {
+      var scripts = manifest && Array.isArray(manifest.scripts) ? manifest.scripts : [];
+      if (!slot) {
+        return;
+      }
+      if (!scripts.length) {
+        slot.textContent = "No scripts registered.";
+        return;
+      }
+      slot.textContent = scripts.map(function (entry) {
+        return (entry.path || "unnamed") + " \u2014 " + (entry.status || "unwired");
+      }).join("\n");
+    })
+    .catch(function () {
+      if (slot) {
+        slot.textContent = "Manifest not loaded.";
+      }
+    });
+})();

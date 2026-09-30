@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZionCore</title>
+  <link rel="stylesheet" href="css/shell.css">
+</head>
+<body>
+  <main class="shell">
+    <p class="eyebrow">Shell · unwired</p>
+    <h1>ZionCore</h1>
+    <p class="lede">Drop JavaScript, HTML, JSON, and Python into the matching folders. This page does not run them until they are wired.</p>
+
+    <section aria-label="Drop slots">
+      <h2>Slots</h2>
+      <ul>
+        <li><code>js/incoming/</code> — browser scripts</li>
+        <li><code>html/incoming/</code> — HTML fragments</li>
+        <li><code>data/</code> — JSON</li>
+        <li><code>python/incoming/</code> — Python, repo only</li>
+      </ul>
+    </section>
+
+    <section aria-label="Registered scripts">
+      <h2>Registered</h2>
+      <pre id="zioncore-manifest">Reading manifest…</pre>
+    </section>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>
